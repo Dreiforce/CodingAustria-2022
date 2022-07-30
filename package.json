@@ -1,0 +1,22 @@
+{
+  "name": "community-tasks",
+  "version": "1.0.0",
+  "dependencies": {
+    "finalhandler": "^1.2.0",
+    "npm-watch": "^0.11.0",
+    "serve-static": "^1.15.0"
+  },
+  "scripts": {
+    "serve": "node server.js",
+    "watch": "npm-watch"
+  },
+  "watch": {
+    "serve": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "js,html,scss",
+      "quiet": false
+    }
+  }
+}
