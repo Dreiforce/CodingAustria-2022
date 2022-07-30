@@ -30,6 +30,8 @@ console.log(__dirname)
 //setting middleware
 app.use(express.static(__dirname + '/src')); //Serves resources from src
 app.use(express.static(__dirname + '/node_modules/leaflet/dist'))
+app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist'))
+
 
 const api = express.Router()
 api.get('/task/', (req, res, next) => {
