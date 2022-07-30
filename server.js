@@ -6,6 +6,7 @@ var tasklist = [{
     "id": "1",
     "name": "Water the tree",
     "description": "",
+    "iconUrl": "assetss/water-the-plant.png",
     steps: [
         "Take watering can",
         "Fill with water",
@@ -15,6 +16,7 @@ var tasklist = [{
     "id": "2",
     "name": "Water the tree",
     "description": "",
+    "iconUrl": "assetss/water-the-plant.png",
     steps: [
         "Take watering can",
         "Fill with water",
