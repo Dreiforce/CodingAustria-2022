@@ -6,22 +6,24 @@ var tasklist = [{
     "id": "1",
     "name": "Water the tree",
     "description": "",
-    "iconUrl": "assetss/water-the-plant.png",
-    steps: [
+    "iconUrl": "assets/water-the-plant.png",
+    "steps": [
         "Take watering can",
         "Fill with water",
         "Water the tree"
-    ]
+    ],
+    "location": [48.1969332,15.9094212]
 },{
     "id": "2",
-    "name": "Water the tree",
+    "name": "Pickup bulk waste from sidewalk",
     "description": "",
-    "iconUrl": "assetss/water-the-plant.png",
-    steps: [
-        "Take watering can",
-        "Fill with water",
-        "Water the tree"
-    ]
+    "iconUrl": "assets/bulk-waste.jpg",
+    "steps": [
+        "You'll need a car or truck",
+        "Pickup the bulk waste",
+        "Bring the waste to the skip"
+    ],
+    "location": [48.1939332,15.9074212]
 }]
 
 console.log(__dirname)

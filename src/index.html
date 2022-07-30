@@ -38,11 +38,11 @@
         <div id="map"></div>
     </div>
     <div id="sidebar">
-        <h1>Überschrift</h1>
-        <p>
+        <h1 id="sidebar-title">Überschrift</h1>
+        <p id="sidebar-description">
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
         </p>
-        <ul>
+        <ul id="sidebar-tasks">
             <li>Test 1</li>
             <li>Test Other</li>
             <li>Test skjdf</li>
@@ -50,6 +50,11 @@
     </div>
 
     <script>
+
+        function byId(id) {
+            return document.getElementById(id)
+        }
+
         const mapDiv = document.getElementById("map");
         const mapContainerDiv = document.getElementById("map-container");
         const sidebarDiv = document.getElementById("sidebar");
@@ -58,14 +63,6 @@
             map.invalidateSize();
         });
         resizeObserver.observe(mapDiv);
-
-         var myIcon = L.icon({
-                 iconUrl: 'assets/water-the-plant.png',
-                 iconRetinaUrl:  'assets/water-the-plant.png',
-                 iconSize: [95, 95],
-                 iconAnchor: [95, 94],
-                 popupAnchor: [-3, -76],
-                 });
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -76,16 +73,26 @@
             .then((data) => {
                 console.log(data[0])
                 for(var i = 0; i < data.length; i++) {
-                    var element = data[i]
-                    L.marker([48.1969332,15.9094212 + Math.random() * 0.01], {
+                    const element = data[i]
+                    const myIcon = L.icon({
+                        iconUrl: element.iconUrl,
+                        iconRetinaUrl:  element.iconUrl,
+                        iconSize: [95, 95],
+                        iconAnchor: [95, 94],
+                        popupAnchor: [-3, -76],
+                    });
+                    L.marker(element.location, {
                         icon: myIcon
                     }).addTo(map)
                         .on('click', function(e) {
                             mapContainerDiv.classList.add("map-smaller")
                             sidebarDiv.classList.add("sidebar-extended")
-                        })
-                        .bindPopup(element.name)
-                        .openPopup();
+                            byId("sidebar-title").innerText = element.name
+                            byId("sidebar-description").innerText = element.description
+                            byId("sidebar-tasks").innerHTML = element.steps.map(e => {
+                                return "<li>" + e + "</li>"
+                            }).reduce((a,b) => a + b)
+                        });
                 }
 
             });
