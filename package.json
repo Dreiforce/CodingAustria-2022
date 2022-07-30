@@ -2,7 +2,9 @@
   "name": "community-tasks",
   "version": "1.0.0",
   "dependencies": {
+    "express": "^4.18.1",
     "finalhandler": "^1.2.0",
+    "leaflet": "^1.8.0",
     "npm-watch": "^0.11.0",
     "serve-static": "^1.15.0"
   },
@@ -13,7 +15,8 @@
   "watch": {
     "serve": {
       "patterns": [
-        "src"
+        "src",
+        "server"
       ],
       "extensions": "js,html,scss",
       "quiet": false
